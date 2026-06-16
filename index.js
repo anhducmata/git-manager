@@ -7,11 +7,12 @@ import fs from 'fs';
 import path from 'path';
 import os from 'os';
 import { execSync } from 'child_process';
+import { fileURLToPath } from 'url';
 
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const configDir = path.join(os.homedir(), '.config', 'git-manager');
 const accountsFile = path.join(configDir, 'accounts.json');
 
-const __dirname = path.dirname(new URL(import.meta.url).pathname);
 const pkg = JSON.parse(fs.readFileSync(path.join(__dirname, 'package.json'), 'utf-8'));
 
 // Ensure config dir exists
